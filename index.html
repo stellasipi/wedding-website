@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stella & Zsolti Esküvője - 2027 július 3</title>
+    <title>Stella & Zsolti Esküvője - 2027 · 07 · 03</title>
     <style>
         @font-face {
             font-family: 'WeddingSerif';
@@ -138,20 +138,21 @@
             text-transform: uppercase;
         }
 
-        .tagline {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--shadow-grey);
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-
         .wedding-date {
             font-size: clamp(1.5rem, 3vw, 2.5rem);
             color: var(--fern);
             margin-top: 2rem;
             font-weight: 400;
+        }
+
+        .invite-text {
+            font-family: 'WeddingSans', sans-serif;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--dusty-olive);
+            max-width: 480px;
+            margin: 2rem auto 0;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
         .scroll-indicator {
@@ -310,6 +311,40 @@
             border: 1px solid rgba(84, 112, 68, 0.15);
         }
 
+        .thank-you-panel {
+            display: none;
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background: var(--honeydew);
+            padding: 4rem 3rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 25px rgba(84, 112, 68, 0.08);
+            border: 1px solid rgba(84, 112, 68, 0.15);
+            text-align: center;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .thank-you-panel.show {
+            display: block;
+        }
+
+        .thank-you-icon {
+            width: 64px;
+            height: 64px;
+            line-height: 64px;
+            border-radius: 50%;
+            background: var(--evergreen);
+            color: var(--white);
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .thank-you-message {
+            font-size: 1.15rem;
+            color: var(--dusty-olive);
+            line-height: 1.8;
+        }
+
         .form-group {
             margin-bottom: 2rem;
         }
@@ -398,6 +433,28 @@
 
         .allergy-textbox.show input {
             display: block;
+        }
+
+        .field-error {
+            display: none;
+            color: var(--evergreen);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 0.6rem;
+        }
+
+        .field-error.show {
+            display: block;
+        }
+
+        .form-group input.input-error {
+            border-color: var(--evergreen);
+        }
+
+        .radio-group.input-error {
+            border: 2px solid var(--evergreen);
+            border-radius: 4px;
+            padding: 0.5rem;
         }
 
         .submit-btn {
@@ -546,8 +603,8 @@
             <h1 class="couple-names">
                 <span data-translate="names">Stella & Zsolti</span>
             </h1>
-            <p class="tagline" data-translate="tagline">Házasságot Kötnek</p>
-            <p class="wedding-date" data-translate="date">2027 július 3</p>
+            <p class="wedding-date" data-translate="date">2027 · 07 · 03</p>
+            <p class="invite-text" data-translate="invite_text">Szeretettel várunk az esküvőnkre, ahol veletek szeretnénk hajnalig ünnepelni és bulizni. Legyen ez most a ti estétek is!</p>
         </div>
         <div class="scroll-indicator"></div>
     </section>
@@ -574,14 +631,13 @@
                 <div class="schedule-time">18:30</div>
                 <div class="schedule-details">
                     <h3 data-translate="photos_title">Fotózkodás és Ajándékozás</h3>
-                    <p data-translate="photos_desc">Közös fotók és ajándékozás az ifjú párral</p>
+                    <p data-translate="photos_desc">Közös fotók és ajándékozás</p>
                 </div>
             </div>
             <div class="schedule-item">
                 <div class="schedule-time">20:00</div>
                 <div class="schedule-details">
                     <h3 data-translate="dinner_title">Vacsora</h3>
-                    <p data-translate="dinner_desc">Ünnepi vacsora</p>
                 </div>
             </div>
             <div class="schedule-item">
@@ -606,23 +662,22 @@
                     6120 Kiskunmajsa, Petőfi tér 9</p>
                 </div>
                 <div class="venue-item">
-                    <p><strong data-translate="reception_label">Vacsora és Buli:</strong><br>
+                    <p><strong data-translate="reception_label">Polgári szertartás és lakodalom:</strong><br>
                     Polyák Borbirtok<br>
                     Kunszállás</p>
                 </div>
             </div>
             <div class="info-card">
-                <h3 data-translate="accommodation_title">Megközelítés és Szállás</h3>
-                <p data-translate="accommodation_desc">A helyszínt az M5-ös autópálya új kunszállási lehajtóján a legegyszerűbb megközelíteni. Éjfél után pedig biztosítunk sofőrszolgáltatást a helyszín és Kecskemét között, ezért érdemes Kecskeméten szállást foglalni.</p>
+                <h3 data-translate="directions_title">Megközelítés</h3>
+                <p data-translate="directions_desc">A helyszínt az M5-ös autópálya új kunszállási lehajtóján a legegyszerűbb megközelíteni.</p>
             </div>
             <div class="info-card">
-                <h3 data-translate="dresscode_title">Öltözködés</h3>
-                <p data-translate="dresscode_main">Félformális / Koktél Öltözet</p><br>
-                <p data-translate="dresscode_desc">Szeretnénk, ha kényelmesen éreznéd magad és a legjobb formádat hoznád. A szertartás templomban, a vacsora pedig szabadtéren lesz.</p>
+                <h3 data-translate="accommodation_title">Szállás</h3>
+                <p data-translate="accommodation_desc">Éjfél után pedig biztosítunk ingyenes sofőrszolgáltatást a helyszín és Kecskemét között, ezért érdemes Kecskeméten szállást foglalni.</p>
             </div>
             <div class="info-card">
                 <h3 data-translate="registry_title">Nászajándék</h3>
-                <p data-translate="registry_desc">A jelenlétetek a legnagyobb ajándék! Ha mégis szeretnétek megajándékozni minket, örömmel fogadunk borítékot.</p>
+                <p data-translate="registry_desc">Közös jövőnkhöz a borítékban érkező ajándékokat köszönettel fogadjuk</p>
             </div>
         </div>
     </section>
@@ -630,10 +685,11 @@
     <!-- RSVP Section -->
     <section class="rsvp" id="rsvp">
         <h2 data-translate="rsvp_title">Visszajelzés</h2>
-        <form class="rsvp-form" id="rsvpForm">
+        <form class="rsvp-form" id="rsvpForm" novalidate>
             <div class="form-group">
-                <label for="name" data-translate="form_name">Teljes Név *</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name" data-translate="form_name">Teljes név *</label>
+                <input type="text" id="name" name="name">
+                <span class="field-error" id="error-name"></span>
             </div>
             
             <div class="form-group">
@@ -642,22 +698,24 @@
             </div>
             
             <div class="form-group">
-                <label for="email" data-translate="form_email">E-mail *</label>
-                <input type="email" id="email" name="email" required>
+                <label for="email" data-translate="form_email">E-mail (az alábbi visszajelzésről másolatot kapsz)</label>
+                <input type="email" id="email" name="email">
+                <span class="field-error" id="error-email"></span>
             </div>
             
             <div class="form-group">
                 <label data-translate="form_attending">Részt tudsz/tudok venni? *</label>
                 <div class="radio-group">
                     <label>
-                        <input type="radio" name="attending" value="Igen" required>
+                        <input type="radio" name="attending" value="Igen">
                         <span data-translate="attending_yes">Igen</span>
                     </label>
                     <label>
-                        <input type="radio" name="attending" value="Sajnos nem" required>
+                        <input type="radio" name="attending" value="Sajnos nem">
                         <span data-translate="attending_no">Sajnos nem</span>
                     </label>
                 </div>
+                <span class="field-error" id="error-attending"></span>
             </div>
             
             <div id="conditional-fields">
@@ -678,6 +736,7 @@
                         <input type="text" id="allergies_text" name="allergies_text" data-translate-placeholder="allergies_placeholder">
                     </div>
                 </div>
+                <span class="field-error" id="error-allergies"></span>
             </div>
             
             <div class="form-group">
@@ -696,6 +755,7 @@
                         <span data-translate="driver_maybe">Még nem tudom</span>
                     </label>
                 </div>
+                <span class="field-error" id="error-driver"></span>
             </div>
             </div>
             
@@ -707,6 +767,10 @@
             <button type="submit" class="submit-btn" data-translate="submit_btn">Visszajelzés Küldése</button>
             <div class="form-message" id="formMessage"></div>
         </form>
+        <div class="thank-you-panel" id="thankYouPanel">
+            <div class="thank-you-icon">✓</div>
+            <p class="thank-you-message" id="thankYouMessage"></p>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -719,34 +783,32 @@
         const translations = {
             hu: {
                 names: 'Stella & Zsolti',
-                tagline: 'Házasságot Kötnek',
                 date: '2027 · 07 · 03',
+                invite_text: 'Szeretettel várunk az esküvőnkre, ahol veletek szeretnénk hajnalig ünnepelni és bulizni. Legyen ez most a ti estétek is!',
                 schedule_title: 'Program',
                 ceremony_title: 'Templomi Szertartás',
                 civil_title: 'Polgári Szertartás',
                 civil_desc: 'Polyák Borbirtok, Kunszállás',
                 photos_title: 'Fotózkodás és Ajándékozás',
-                photos_desc: 'Közös fotók és ajándékozás az ifjú párral',
+                photos_desc: 'Közös fotók és ajándékozás',
                 dinner_title: 'Vacsora',
-                dinner_desc: 'Ünnepi vacsora',
                 cake_title: 'Torta és Hajnalig Tartó Buli',
                 cake_desc: 'Tortavágás és tánc hajnalig',
                 info_title: 'Információk',
                 venue_title: 'Helyszínek',
                 church_label: 'Templom:',
-                reception_label: 'Vacsora és Buli:',
-                accommodation_title: 'Megközelítés és Szállás',
-                accommodation_desc: 'A helyszínt az M5-ös autópálya új kunszállási lehajtóján a legegyszerűbb megközelíteni. Éjfél után pedig biztosítunk sofőrszolgáltatást a helyszín és Kecskemét között, ezért érdemes Kecskeméten szállást foglalni.',
-                dresscode_title: 'Öltözködés',
-                dresscode_main: 'Félformális / Koktél Öltözet',
-                dresscode_desc: 'Szeretnénk, ha kényelmesen éreznéd magad és a legjobb formádat hoznád. A szertartás templomban, a vacsora pedig szabadtéren lesz.',
+                reception_label: 'Polgári szertartás és lakodalom:',
+                directions_title: 'Megközelítés',
+                directions_desc: 'A helyszínt az M5-ös autópálya új kunszállási lehajtóján a legegyszerűbb megközelíteni.',
+                accommodation_title: 'Szállás',
+                accommodation_desc: 'Éjfél után pedig biztosítunk ingyenes sofőrszolgáltatást a helyszín és Kecskemét között, ezért érdemes Kecskeméten szállást foglalni.',
                 registry_title: 'Nászajándék',
-                registry_desc: 'A jelenlétetek a legnagyobb ajándék! Ha mégis szeretnétek megajándékozni minket, örömmel fogadunk borítékot.',
+                registry_desc: 'Közös jövőnkhöz a borítékban érkező ajándékokat köszönettel fogadjuk',
                 rsvp_title: 'Visszajelzés',
-                form_name: 'Teljes Név *',
+                form_name: 'Teljes név *',
                 form_additional: 'Kiket regisztrálsz magadon kívül (teljes nevek)',
                 additional_placeholder: 'pl. Kiss Péter, Nagy Anna',
-                form_email: 'E-mail *',
+                form_email: 'E-mail (az alábbi visszajelzésről másolatot kapsz)',
                 form_attending: 'Részt tudsz/tudok venni? *',
                 attending_yes: 'Igen',
                 attending_no: 'Sajnos nem',
@@ -763,14 +825,20 @@
                 submit_btn: 'Visszajelzés Küldése',
                 submitting: 'Küldés...',
                 footer: 'Alig várjuk, hogy együtt ünnepelhessünk veled!',
-                success_message: 'Köszönjük a visszajelzésed! Egy másolatot elküldtünk az e-mail címedre is.',
+                success_message: 'Köszönjük a visszajelzésed!',
+                success_message_email: 'Köszönjük a visszajelzésed! Egy másolatot elküldtünk az e-mail címedre is.',
                 error_message: 'Hiba történt a visszajelzés küldése közben. Kérjük, próbáld újra, vagy lépj kapcsolatba velünk közvetlenül.',
-                allergy_required: 'Kérjük, add meg az allergiákat!'
+                allergy_required: 'Kérjük, add meg az allergiákat!',
+                error_name_required: 'Kérjük, add meg a teljes neved.',
+                error_attending_required: 'Kérjük, válaszd ki, hogy részt tudsz-e venni.',
+                error_allergies_required: 'Kérjük, válaszd ki, hogy van-e ételallergiád.',
+                error_driver_required: 'Kérjük, válaszd ki a sofőrszolgáltatás opciót.',
+                error_email_invalid: 'Kérjük, adj meg egy érvényes e-mail címet.'
             },
             en: {
                 names: 'Stella & Zsolti',
-                tagline: 'Are Getting Married',
                 date: '2027 · 07 · 03',
+                invite_text: "Come celebrate with us and dance the night away. We're hoping this will be a proper night out for you too!",
                 schedule_title: 'Schedule',
                 ceremony_title: 'Church Ceremony',
                 civil_title: 'Civil Ceremony',
@@ -778,29 +846,27 @@
                 photos_title: 'Photos & Gifts',
                 photos_desc: 'Group photos and gifts with the newlyweds',
                 dinner_title: 'Dinner',
-                dinner_desc: 'Festive dinner',
-                cake_title: 'Cake & Dancing',
+                cake_title: 'Cake & Party',
                 cake_desc: 'Cake cutting and dancing until dawn',
                 info_title: 'Information',
                 venue_title: 'Venues',
                 church_label: 'Church:',
-                reception_label: 'Dinner & Party:',
-                accommodation_title: 'Directions & Accommodation',
-                accommodation_desc: 'The venue is easiest to reach via the new Kunszállás exit on the M5 motorway. After midnight, we provide driver service between the venue and Kecskemét, so we recommend booking accommodation in Kecskemét.',
-                dresscode_title: 'Dress Code',
-                dresscode_main: 'Semi-formal / Cocktail Attire',
-                dresscode_desc: 'We want you to feel comfortable and look your best. The ceremony will be in the church, and dinner will be outdoors.',
+                reception_label: 'Civil ceremony and party:',
+                directions_title: 'Getting there',
+                directions_desc: 'The venue is easiest to reach via the new Kunszállás exit on the M5 motorway.',
+                accommodation_title: 'Accommodation',
+                accommodation_desc: 'After midnight, we provide a free driver service between the venue and Kecskemét, so we recommend booking accommodation in Kecskemét.',
                 registry_title: 'Gifts',
-                registry_desc: 'Your presence is the greatest gift! If you still wish to give us something, we would be happy to receive a card.',
+                registry_desc: 'For our future together, gifts in an envelope would be greatly appreciated.',
                 rsvp_title: 'RSVP',
                 form_name: 'Full Name *',
                 form_additional: 'Who else are you registering (full names)',
                 additional_placeholder: 'e.g. John Smith, Jane Doe',
-                form_email: 'E-mail *',
+                form_email: "E-mail (you'll receive a copy of this RSVP)",
                 form_attending: 'Will you be able to attend? *',
                 attending_yes: 'Yes',
                 attending_no: 'Unfortunately not',
-                form_allergies: 'Food Allergies *',
+                form_allergies: 'Food allergies *',
                 allergies_none: 'I don\'t have',
                 allergies_have: 'I have',
                 allergies_placeholder: 'Please list any allergies',
@@ -813,9 +879,15 @@
                 submit_btn: 'Submit RSVP',
                 submitting: 'Submitting...',
                 footer: 'We can\'t wait to celebrate with you!',
-                success_message: 'Thank you for your RSVP! We\'ve sent a copy to your email address.',
+                success_message: 'Thank you for your RSVP!',
+                success_message_email: 'Thank you for your RSVP! We\'ve sent a copy to your email address.',
                 error_message: 'There was an error submitting your RSVP. Please try again or contact us directly.',
-                allergy_required: 'Please provide allergy details!'
+                allergy_required: 'Please provide allergy details!',
+                error_name_required: 'Please enter your full name.',
+                error_attending_required: 'Please select whether you can attend.',
+                error_allergies_required: 'Please select whether you have any food allergies.',
+                error_driver_required: 'Please select a driver service option.',
+                error_email_invalid: 'Please enter a valid email address.'
             }
         };
 
@@ -842,6 +914,13 @@
                 }
             });
 
+            // Update thank-you message if it's currently showing, using the last-known email state
+            const thankYouPanel = document.getElementById('thankYouPanel');
+            if (thankYouPanel && thankYouPanel.classList.contains('show')) {
+                const key = thankYouPanel.dataset.emailProvided === 'true' ? 'success_message_email' : 'success_message';
+                document.getElementById('thankYouMessage').textContent = translations[lang][key];
+            }
+
             // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -867,12 +946,41 @@
             });
         });
 
+        // Field-level error helpers
+        function showFieldError(fieldId, message) {
+            const el = document.getElementById(fieldId);
+            if (el) {
+                el.textContent = message;
+                el.classList.add('show');
+            }
+        }
+
+        function clearFieldError(fieldId) {
+            const el = document.getElementById(fieldId);
+            if (el) {
+                el.textContent = '';
+                el.classList.remove('show');
+            }
+        }
+
+        function clearAllFieldErrors() {
+            document.querySelectorAll('.field-error').forEach(el => {
+                el.textContent = '';
+                el.classList.remove('show');
+            });
+            document.querySelectorAll('.input-error').forEach(el => {
+                el.classList.remove('input-error');
+            });
+        }
+
         // Attending radio button logic - show/hide conditional fields
         const attendingRadios = document.querySelectorAll('input[name="attending"]');
         const conditionalFields = document.getElementById('conditional-fields');
 
         attendingRadios.forEach(radio => {
             radio.addEventListener('change', function() {
+                clearFieldError('error-attending');
+                this.closest('.radio-group').classList.remove('input-error');
                 if (this.value === 'Sajnos nem') {
                     conditionalFields.style.display = 'none';
                     // Clear selections in hidden fields so they don't get submitted
@@ -881,6 +989,8 @@
                     allergiesTextInput.value = '';
                     allergyTextboxContainer.classList.remove('show');
                     allergiesTextInput.removeAttribute('required');
+                    clearFieldError('error-allergies');
+                    clearFieldError('error-driver');
                 } else {
                     conditionalFields.style.display = '';
                 }
@@ -894,6 +1004,8 @@
 
         allergyRadios.forEach(radio => {
             radio.addEventListener('change', function() {
+                clearFieldError('error-allergies');
+                this.closest('.radio-group').classList.remove('input-error');
                 if (this.value === 'Van') {
                     allergyTextboxContainer.classList.add('show');
                     allergiesTextInput.setAttribute('required', 'required');
@@ -901,8 +1013,37 @@
                     allergyTextboxContainer.classList.remove('show');
                     allergiesTextInput.removeAttribute('required');
                     allergiesTextInput.value = '';
+                    allergiesTextInput.classList.remove('input-error');
                 }
             });
+        });
+
+        allergiesTextInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                clearFieldError('error-allergies');
+                this.classList.remove('input-error');
+            }
+        });
+
+        document.querySelectorAll('input[name="driver_service"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                clearFieldError('error-driver');
+                this.closest('.radio-group').classList.remove('input-error');
+            });
+        });
+
+        const nameInput = document.getElementById('name');
+        nameInput.addEventListener('input', function() {
+            if (this.value.trim()) {
+                clearFieldError('error-name');
+                this.classList.remove('input-error');
+            }
+        });
+
+        const emailInputEl = document.getElementById('email');
+        emailInputEl.addEventListener('input', function() {
+            clearFieldError('error-email');
+            this.classList.remove('input-error');
         });
 
         // Smooth scrolling
@@ -920,43 +1061,86 @@
         const form = document.getElementById('rsvpForm');
         const formMessage = document.getElementById('formMessage');
 
+        // Full form validation - shows inline errors under each missing mandatory field
+        function validateForm() {
+            clearAllFieldErrors();
+            let isValid = true;
+            let firstInvalidEl = null;
+
+            // Name
+            if (!nameInput.value.trim()) {
+                showFieldError('error-name', translations[currentLang].error_name_required);
+                nameInput.classList.add('input-error');
+                isValid = false;
+                firstInvalidEl = firstInvalidEl || nameInput;
+            }
+
+            // Email (optional, but must be a valid format if filled in)
+            const emailInput = document.getElementById('email');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() && !emailPattern.test(emailInput.value.trim())) {
+                showFieldError('error-email', translations[currentLang].error_email_invalid);
+                emailInput.classList.add('input-error');
+                isValid = false;
+                firstInvalidEl = firstInvalidEl || emailInput;
+            }
+
+            // Attending
+            const attendingChecked = document.querySelector('input[name="attending"]:checked');
+            const attendingGroup = document.querySelector('input[name="attending"]').closest('.radio-group');
+            if (!attendingChecked) {
+                showFieldError('error-attending', translations[currentLang].error_attending_required);
+                attendingGroup.classList.add('input-error');
+                isValid = false;
+                firstInvalidEl = firstInvalidEl || attendingGroup;
+            }
+
+            const isAttending = attendingChecked && attendingChecked.value === 'Igen';
+
+            if (isAttending) {
+                // Allergies
+                const allergyChecked = document.querySelector('input[name="allergy_status"]:checked');
+                const allergyGroup = document.querySelector('input[name="allergy_status"]').closest('.radio-group');
+                if (!allergyChecked) {
+                    showFieldError('error-allergies', translations[currentLang].error_allergies_required);
+                    allergyGroup.classList.add('input-error');
+                    isValid = false;
+                    firstInvalidEl = firstInvalidEl || allergyGroup;
+                } else if (allergyChecked.value === 'Van' && !allergiesTextInput.value.trim()) {
+                    showFieldError('error-allergies', translations[currentLang].allergy_required);
+                    allergiesTextInput.classList.add('input-error');
+                    isValid = false;
+                    firstInvalidEl = firstInvalidEl || allergiesTextInput;
+                }
+
+                // Driver service
+                const driverChecked = document.querySelector('input[name="driver_service"]:checked');
+                const driverGroup = document.querySelector('input[name="driver_service"]').closest('.radio-group');
+                if (!driverChecked) {
+                    showFieldError('error-driver', translations[currentLang].error_driver_required);
+                    driverGroup.classList.add('input-error');
+                    isValid = false;
+                    firstInvalidEl = firstInvalidEl || driverGroup;
+                }
+            }
+
+            if (firstInvalidEl) {
+                firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            return isValid;
+        }
+
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const attendingValue = document.querySelector('input[name="attending"]:checked');
-            const isAttending = attendingValue && attendingValue.value === 'Igen';
-            
-            let allergyStatus = null;
-            
-            if (isAttending) {
-                // Get allergy status
-                allergyStatus = document.querySelector('input[name="allergy_status"]:checked');
-                
-                // Validate allergy field
-                if (!allergyStatus) {
-                    formMessage.textContent = currentLang === 'hu' 
-                        ? 'Kérjük, válaszd ki, hogy van-e allergiád!'
-                        : 'Please select whether you have allergies!';
-                    formMessage.className = 'form-message error';
-                    return;
-                }
-                
-                if (allergyStatus.value === 'Van' && !allergiesTextInput.value.trim()) {
-                    formMessage.textContent = translations[currentLang].allergy_required;
-                    formMessage.className = 'form-message error';
-                    return;
-                }
-                
-                // Validate driver service field
-                const driverStatus = document.querySelector('input[name="driver_service"]:checked');
-                if (!driverStatus) {
-                    formMessage.textContent = currentLang === 'hu'
-                        ? 'Kérjük, válaszd ki a sofőrszolgáltatás opciót!'
-                        : 'Please select a driver service option!';
-                    formMessage.className = 'form-message error';
-                    return;
-                }
+            if (!validateForm()) {
+                return;
             }
+            
+            const attendingValue = document.querySelector('input[name="attending"]:checked');
+            const isAttending = attendingValue.value === 'Igen';
+            const allergyStatus = isAttending ? document.querySelector('input[name="allergy_status"]:checked') : null;
             
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
@@ -1001,12 +1185,15 @@
                     body: JSON.stringify(data)
                 });
                 
-                // Show success message
-                formMessage.textContent = translations[currentLang].success_message;
-                formMessage.className = 'form-message success';
-                form.reset();
-                allergyTextboxContainer.classList.remove('show');
-                conditionalFields.style.display = '';
+                // Hide the form and show the thank-you panel instead
+                const thankYouMessage = data.email 
+                    ? translations[currentLang].success_message_email 
+                    : translations[currentLang].success_message;
+                document.getElementById('thankYouMessage').textContent = thankYouMessage;
+                const thankYouPanel = document.getElementById('thankYouPanel');
+                thankYouPanel.dataset.emailProvided = data.email ? 'true' : 'false';
+                form.style.display = 'none';
+                thankYouPanel.classList.add('show');
                 
             } catch (error) {
                 console.error('Error:', error);
