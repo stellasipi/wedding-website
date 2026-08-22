@@ -26,16 +26,14 @@ Open `wedding-website.html` and your details are already filled in:
 - **Church**: Kiskunmajsai Római Katolikus Templom, 6120 Kiskunmajsa, Petőfi tér 9
 - **Reception**: Polyák Borbirtok, Kunszállás
 
-#### Design Customization (Optional)
-To change colors, modify the CSS variables at the top (lines 11-17):
+### Design Customization (Optional)
+To change colors, modify the CSS variables at the top (in the `:root` block):
 ```css
 :root {
     --white: #FFFFFF;
-    --porcelain: #FFFDF7;    /* Warm background for cards */
-    --honeydew: #e9f2e2;     /* Soft green accents */
-    --fern: #547044;          /* Main text color */
-    --shadow-grey: #547044;   /* Secondary text */
-    --accent-gold: #D4C5A0;   /* Decorative accent */
+    --dusty-olive: #547044;   /* main text, headings, borders, icons */
+    --soft-linen: #DDE2D6;    /* subtle highlights (RSVP form, hover states) */
+    --evergreen: #263526;     /* high-contrast footer & CTA button */
 }
 ```
 
@@ -186,13 +184,22 @@ To receive an email notification when someone RSVPs (in addition to the guest co
 
 ## Color Palette
 
-The website uses a sophisticated, natural color scheme:
+- **#547044** - Dusty Olive - main text, headings, borders, icons (now also the border on schedule/info cards)
+- **#FFFFFF** - White - main background, and the background of the schedule box & info cards
+- **#DDE2D6** - Soft Linen - subtle highlights (RSVP form background, hover states)
+- **#263526** - Evergreen - high-contrast elements: footer and the RSVP submit button
 
-- **#FFFFFF** - Pure white for main backgrounds
-- **#FFFDF7** - Porcelain for cards and schedule backgrounds
-- **#e9f2e2** - Honeydew for the RSVP form and accents
-- **#547044** - Fern green for all text
-- **#D4C5A0** - Accent gold for decorative elements
+## Fonts & Logo
+
+The website now uses your actual invitation assets, embedded directly in the HTML file so no separate files need to be uploaded anywhere:
+
+- **Elaris Regular** - used for all headings (couple's names, section titles, schedule/info card titles)
+- **Montserrat Light** - used for all body text, labels, and buttons
+- **Monogram (Zs & S)** - displayed above your names in the hero section
+
+Because the fonts and logo are embedded as data directly inside the HTML file, the single `wedding-website.html` file remains fully self-contained — you can still drag-and-drop just this one file to Netlify/Vercel/GitHub Pages and everything (fonts, logo, colors) will work immediately, no extra uploads needed.
+
+**Note:** Only the Light weight of Montserrat was provided, so any bold/medium text (like form labels) is rendered by the browser's automatic "faux bold," which looks great in practice but isn't a distinct designed weight.
 
 ## Troubleshooting
 
