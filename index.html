@@ -636,16 +636,17 @@
                 </div>
             </div>
             
+            <div id="conditional-fields">
             <div class="form-group">
                 <label data-translate="form_allergies">Ételallergiák *</label>
                 <div class="allergy-container">
                     <div class="radio-group">
                         <label>
-                            <input type="radio" name="allergy_status" value="Nincs" required>
+                            <input type="radio" name="allergy_status" value="Nincs">
                             <span data-translate="allergies_none">Nincs</span>
                         </label>
                         <label>
-                            <input type="radio" name="allergy_status" value="Van" required>
+                            <input type="radio" name="allergy_status" value="Van">
                             <span data-translate="allergies_have">Van</span>
                         </label>
                     </div>
@@ -659,18 +660,19 @@
                 <label data-translate="form_driver">Igénybe vennéd a sofőrszolgáltatást a helyszín és Kecskemét között? *</label>
                 <div class="radio-group">
                     <label>
-                        <input type="radio" name="driver_service" value="Igen" required>
+                        <input type="radio" name="driver_service" value="Igen">
                         <span data-translate="driver_yes">Igen</span>
                     </label>
                     <label>
-                        <input type="radio" name="driver_service" value="Nem" required>
+                        <input type="radio" name="driver_service" value="Nem">
                         <span data-translate="driver_no">Nem</span>
                     </label>
                     <label>
-                        <input type="radio" name="driver_service" value="Még nem tudom" required>
+                        <input type="radio" name="driver_service" value="Még nem tudom">
                         <span data-translate="driver_maybe">Még nem tudom</span>
                     </label>
                 </div>
+            </div>
             </div>
             
             <div class="form-group">
@@ -845,6 +847,26 @@
             });
         });
 
+        // Attending radio button logic - show/hide conditional fields
+        const attendingRadios = document.querySelectorAll('input[name="attending"]');
+        const conditionalFields = document.getElementById('conditional-fields');
+
+        attendingRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'Sajnos nem') {
+                    conditionalFields.style.display = 'none';
+                    // Clear selections in hidden fields so they don't get submitted
+                    document.querySelectorAll('input[name="allergy_status"]').forEach(r => r.checked = false);
+                    document.querySelectorAll('input[name="driver_service"]').forEach(r => r.checked = false);
+                    allergiesTextInput.value = '';
+                    allergyTextboxContainer.classList.remove('show');
+                    allergiesTextInput.removeAttribute('required');
+                } else {
+                    conditionalFields.style.display = '';
+                }
+            });
+        });
+
         // Allergy radio button logic
         const allergyRadios = document.querySelectorAll('input[name="allergy_status"]');
         const allergyTextboxContainer = document.getElementById('allergy-textbox-container');
@@ -881,22 +903,39 @@
         form.addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get allergy status
-            const allergyStatus = document.querySelector('input[name="allergy_status"]:checked');
+            const attendingValue = document.querySelector('input[name="attending"]:checked');
+            const isAttending = attendingValue && attendingValue.value === 'Igen';
             
-            // Validate allergy field
-            if (!allergyStatus) {
-                formMessage.textContent = currentLang === 'hu' 
-                    ? 'Kérjük, válaszd ki, hogy van-e allergiád!'
-                    : 'Please select whether you have allergies!';
-                formMessage.className = 'form-message error';
-                return;
-            }
+            let allergyStatus = null;
             
-            if (allergyStatus.value === 'Van' && !allergiesTextInput.value.trim()) {
-                formMessage.textContent = translations[currentLang].allergy_required;
-                formMessage.className = 'form-message error';
-                return;
+            if (isAttending) {
+                // Get allergy status
+                allergyStatus = document.querySelector('input[name="allergy_status"]:checked');
+                
+                // Validate allergy field
+                if (!allergyStatus) {
+                    formMessage.textContent = currentLang === 'hu' 
+                        ? 'Kérjük, válaszd ki, hogy van-e allergiád!'
+                        : 'Please select whether you have allergies!';
+                    formMessage.className = 'form-message error';
+                    return;
+                }
+                
+                if (allergyStatus.value === 'Van' && !allergiesTextInput.value.trim()) {
+                    formMessage.textContent = translations[currentLang].allergy_required;
+                    formMessage.className = 'form-message error';
+                    return;
+                }
+                
+                // Validate driver service field
+                const driverStatus = document.querySelector('input[name="driver_service"]:checked');
+                if (!driverStatus) {
+                    formMessage.textContent = currentLang === 'hu'
+                        ? 'Kérjük, válaszd ki a sofőrszolgáltatás opciót!'
+                        : 'Please select a driver service option!';
+                    formMessage.className = 'form-message error';
+                    return;
+                }
             }
             
             const submitBtn = form.querySelector('.submit-btn');
@@ -912,10 +951,15 @@
             });
             
             // Handle allergies field
-            if (allergyStatus.value === 'Nincs') {
-                data.allergies = currentLang === 'hu' ? 'Nincs' : 'None';
+            if (isAttending) {
+                if (allergyStatus.value === 'Nincs') {
+                    data.allergies = currentLang === 'hu' ? 'Nincs' : 'None';
+                } else {
+                    data.allergies = allergiesTextInput.value;
+                }
             } else {
-                data.allergies = allergiesTextInput.value;
+                data.allergies = '-';
+                data.driver_service = '-';
             }
             delete data.allergy_status;
             delete data.allergies_text;
@@ -942,6 +986,7 @@
                 formMessage.className = 'form-message success';
                 form.reset();
                 allergyTextboxContainer.classList.remove('show');
+                conditionalFields.style.display = '';
                 
             } catch (error) {
                 console.error('Error:', error);
