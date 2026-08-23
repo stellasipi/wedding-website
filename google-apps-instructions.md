@@ -2,6 +2,14 @@
 
 A beautiful, bilingual single-page wedding website with RSVP functionality that saves responses to Google Sheets.
 
+## Files in This Package
+
+- **`wedding-website.html`** - the page structure and content
+- **`styles.css`** - all visual styling (colors, fonts, layout)
+- **`script.js`** - all interactivity (language switching, RSVP form logic, scroll effects)
+
+These three files work together and must stay in the **same folder** with their original filenames — the HTML links to the other two by name. If you ever need to open the page locally, just double-click `wedding-website.html`; your browser will automatically load the other two from the same folder.
+
 ## Features
 
 ✨ **Single-page scrolling design** - Elegant, modern layout  
@@ -27,7 +35,7 @@ Open `wedding-website.html` and your details are already filled in:
 - **Reception**: Polyák Borbirtok, Kunszállás
 
 ### Design Customization (Optional)
-To change colors, modify the CSS variables at the top (in the `:root` block):
+To change colors, open `styles.css` and modify the CSS variables at the top (in the `:root` block):
 ```css
 :root {
     --white: #FFFFFF;
@@ -87,27 +95,29 @@ If it works, congratulations! 🎉
 
 ### Step 4: Publish Your Website
 
+The site is now three files that must be uploaded **together, in the same folder**: `wedding-website.html`, `styles.css`, and `script.js`. They reference each other by filename, so if you only upload the HTML file the page will load with no styling or interactivity.
+
 You have several options to host your website:
 
 #### Option A: Netlify (Recommended - Free & Easy)
 1. Go to [netlify.com](https://www.netlify.com)
 2. Sign up for a free account
-3. Drag and drop your `wedding-website.html` file
+3. Drag and drop the **folder** containing all three files (`wedding-website.html`, `styles.css`, `script.js`)
 4. Get a free URL like `stella-zsolti.netlify.app`
 5. Optional: Connect a custom domain
 
 #### Option B: GitHub Pages (Free)
 1. Create a GitHub account
 2. Create a new repository
-3. Upload `wedding-website.html`
-4. Rename it to `index.html`
+3. Upload all three files: `wedding-website.html`, `styles.css`, `script.js`
+4. Rename `wedding-website.html` to `index.html`
 5. Enable GitHub Pages in Settings
 6. Your site will be at `username.github.io/repository-name`
 
 #### Option C: Vercel (Free)
 1. Go to [vercel.com](https://vercel.com)
 2. Sign up for free
-3. Upload your file
+3. Upload the folder containing all three files
 4. Get instant hosting
 
 ## RSVP Form Fields
@@ -135,19 +145,18 @@ The form collects the following information:
 
 ### Changing Fonts
 
-Current fonts:
-- **Display font (names, headers)**: Cormorant Garamond
-- **Body font**: Montserrat
+Current fonts (embedded directly in `styles.css`, see the `@font-face` rules near the top):
+- **Display font (names, headers)**: Elaris (your invitation's script font)
+- **Body font**: Montserrat Light
 
-To change fonts:
-1. Visit [Google Fonts](https://fonts.google.com)
-2. Choose your fonts
-3. Update the `<link>` tag on line 8
-4. Update the font-family values in the CSS (lines 27 and 33)
+To use different fonts instead:
+1. Get the font files (or a Google Fonts `<link>` if you'd rather not embed them)
+2. Replace the `@font-face` `src` in `styles.css`, or swap in a Google Fonts `<link>` tag in `wedding-website.html`'s `<head>`
+3. Update the two `font-family` references in `styles.css` (`'WeddingSerif'` for headings, `'WeddingSans'` for body text) to match your new font's name
 
 ### Adding Photos
 
-To add a background photo to the hero section:
+To add a background photo to the hero section, in `styles.css`:
 ```css
 .hero {
     background-image: url('your-photo.jpg');
@@ -160,7 +169,7 @@ To add a background photo to the hero section:
 
 The website is bilingual (Hungarian/English). To edit translations:
 
-1. Find the `translations` object in the JavaScript section
+1. Open `script.js` and find the `translations` object near the top
 2. Edit the Hungarian (`hu`) or English (`en`) text as needed
 3. The default language is Hungarian - to change this, modify the line:
    ```javascript
@@ -169,8 +178,8 @@ The website is bilingual (Hungarian/English). To edit translations:
    Change `'hu'` to `'en'` if you want English as default
 
 **Adding More Languages:**
-1. Add a new language object in the `translations` section
-2. Add a new button in the language switcher HTML
+1. Add a new language object in the `translations` section of `script.js`
+2. Add a new button in the language switcher HTML (in `wedding-website.html`)
 3. Follow the same pattern as Hungarian and English
 
 ### Email Notifications (Optional)
@@ -191,13 +200,13 @@ To receive an email notification when someone RSVPs (in addition to the guest co
 
 ## Fonts & Logo
 
-The website now uses your actual invitation assets, embedded directly in the HTML file so no separate files need to be uploaded anywhere:
+The website uses your actual invitation assets, embedded directly as data inside `styles.css` (fonts) and `wedding-website.html` (the favicon and hero logo) so no separate font/image files need to be uploaded anywhere:
 
 - **Elaris Regular** - used for all headings (couple's names, section titles, schedule/info card titles)
 - **Montserrat Light** - used for all body text, labels, and buttons
-- **Monogram (Zs & S)** - displayed above your names in the hero section
+- **Monogram (Zs & S)** - displayed above your names in the hero section, and as the browser tab favicon
 
-Because the fonts and logo are embedded as data directly inside the HTML file, the single `wedding-website.html` file remains fully self-contained — you can still drag-and-drop just this one file to Netlify/Vercel/GitHub Pages and everything (fonts, logo, colors) will work immediately, no extra uploads needed.
+Because the fonts and logo are embedded as data, you still only need to manage the three code files (`wedding-website.html`, `styles.css`, `script.js`) — no separate `.otf`/`.ttf`/`.png` files to keep track of or upload alongside them.
 
 **Note:** Only the Light weight of Montserrat was provided, so any bold/medium text (like form labels) is rendered by the browser's automatic "faux bold," which looks great in practice but isn't a distinct designed weight.
 
