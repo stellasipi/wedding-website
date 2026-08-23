@@ -352,8 +352,13 @@
         }
 
         .info-card strong {
-            color: var(--fern);
+            display: inline-block;
+            margin-bottom: 0.3rem;
+            color: var(--evergreen);
             font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
         .venue-item {
@@ -362,6 +367,20 @@
 
         .venue-item:last-child {
             margin-bottom: 0;
+        }
+
+        .venue-item a {
+            display: inline-block;
+            margin-top: 0.4rem;
+            color: var(--dusty-olive);
+            text-decoration: none;
+            border-bottom: 1px solid var(--dusty-olive);
+            font-size: 0.9rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .venue-item a:hover {
+            opacity: 0.65;
         }
 
         /* RSVP Section */
@@ -796,12 +815,14 @@
                 <div class="venue-item">
                     <p><strong data-translate="church_label">Templom:</strong><br>
                     Kiskunmajsai Római Katolikus Templom<br>
-                    6120 Kiskunmajsa, Petőfi tér 9</p>
+                    6120 Kiskunmajsa, Petőfi tér 9<br>
+                    <a href="https://maps.app.goo.gl/FixpfoYRiUuwmwnz9" target="_blank" rel="noopener" data-translate="map_link">Megnyitás térképen ↗</a></p>
                 </div>
                 <div class="venue-item">
                     <p><strong data-translate="reception_label">Polgári szertartás és lakodalom:</strong><br>
                     Polyák Borbirtok<br>
-                    Kunszállás</p>
+                    Kunszállás<br>
+                    <a href="https://maps.app.goo.gl/BEsnyVsfQEbrVCXJA" target="_blank" rel="noopener" data-translate="map_link">Megnyitás térképen ↗</a></p>
                 </div>
             </div>
             <div class="info-card">
@@ -936,6 +957,7 @@
                 venue_title: 'Helyszínek',
                 church_label: 'Templom:',
                 reception_label: 'Polgári szertartás és lakodalom:',
+                map_link: 'Megnyitás térképen ↗',
                 directions_title: 'Megközelítés',
                 directions_desc: 'A helyszínt az M5-ös autópálya új kunszállási lehajtóján a legegyszerűbb megközelíteni.',
                 accommodation_title: 'Szállás',
@@ -991,6 +1013,7 @@
                 venue_title: 'Venues',
                 church_label: 'Church:',
                 reception_label: 'Civil ceremony and party:',
+                map_link: 'Open in Maps ↗',
                 directions_title: 'Getting there',
                 directions_desc: 'The venue is easiest to reach via the new Kunszállás exit on the M5 motorway.',
                 accommodation_title: 'Accommodation',
