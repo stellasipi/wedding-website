@@ -20,12 +20,6 @@
     --dusty-olive: #6D6F52;
     --soft-linen: #DDE2D6;
     --evergreen: #263526;
-
-    /* legacy aliases so the rest of the stylesheet keeps working */
-    --fern: var(--dusty-olive);
-    --shadow-grey: var(--dusty-olive);
-    --honeydew: var(--soft-linen);
-    --accent-gold: var(--dusty-olive);
 }
 
 * {
@@ -40,7 +34,7 @@ html {
 
 body {
     font-family: 'WeddingSans', sans-serif;
-    color: var(--fern);
+    color: var(--dusty-olive);
     background: var(--white);
     overflow-x: hidden;
 }
@@ -63,14 +57,14 @@ h1, h2, h3 {
     border-radius: 50px;
     box-shadow: 0 4px 20px rgba(109, 111, 82, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--honeydew);
+    border: 1px solid var(--soft-linen);
 }
 
 .lang-btn {
     padding: 0.5rem 1.2rem;
     border: none;
     background: transparent;
-    color: var(--fern);
+    color: var(--dusty-olive);
     font-family: 'WeddingSans', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
@@ -82,11 +76,11 @@ h1, h2, h3 {
 }
 
 .lang-btn:hover {
-    background: var(--honeydew);
+    background: var(--soft-linen);
 }
 
 .lang-btn.active {
-    background: var(--fern);
+    background: var(--dusty-olive);
     color: var(--white);
 }
 
@@ -213,7 +207,7 @@ h1, h2, h3 {
 
 .wedding-date {
     font-size: clamp(1.5rem, 3vw, 2.5rem);
-    color: var(--fern);
+    color: var(--dusty-olive);
     margin-top: 2rem;
     font-weight: 400;
 }
@@ -239,7 +233,7 @@ h1, h2, h3 {
 .scroll-indicator::before {
     content: '↓';
     font-size: 2rem;
-    color: var(--fern);
+    color: var(--dusty-olive);
 }
 
 /* Section Styles */
@@ -266,7 +260,7 @@ section h2::after {
     display: block;
     width: 80px;
     height: 2px;
-    background: var(--accent-gold);
+    background: var(--dusty-olive);
     margin: 1.5rem auto 0;
 }
 
@@ -293,7 +287,7 @@ section h2::after {
 
 .schedule-time {
     font-size: 1.1rem;
-    color: var(--fern);
+    color: var(--dusty-olive);
     font-weight: 500;
     text-align: right;
 }
@@ -307,7 +301,7 @@ section h2::after {
 }
 
 .schedule-details p {
-    color: var(--shadow-grey);
+    color: var(--dusty-olive);
     opacity: 0.85;
     line-height: 1.6;
 }
@@ -344,7 +338,7 @@ section h2::after {
 
 .info-card p {
     line-height: 1.8;
-    color: var(--shadow-grey);
+    color: var(--evergreen);
     opacity: 0.9;
 }
 
@@ -388,17 +382,17 @@ section h2::after {
 }
 
 .rsvp h2 {
-    color: var(--fern);
+    color: var(--dusty-olive);
 }
 
 .rsvp h2::after {
-    background: var(--accent-gold);
+    background: var(--dusty-olive);
 }
 
 .rsvp-form {
     max-width: 600px;
     margin: 3rem auto 0;
-    background: var(--honeydew);
+    background: var(--soft-linen);
     padding: 3rem;
     border-radius: 4px;
     box-shadow: 0 4px 25px rgba(109, 111, 82, 0.08);
@@ -409,7 +403,7 @@ section h2::after {
     display: none;
     max-width: 600px;
     margin: 3rem auto 0;
-    background: var(--honeydew);
+    background: var(--soft-linen);
     padding: 4rem 3rem;
     border-radius: 4px;
     box-shadow: 0 4px 25px rgba(109, 111, 82, 0.08);
@@ -446,7 +440,7 @@ section h2::after {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--fern);
+    color: var(--dusty-olive);
     font-weight: 500;
     font-size: 0.95rem;
 }
@@ -463,7 +457,7 @@ section h2::after {
     font-size: 1rem;
     transition: all 0.3s;
     background: var(--white);
-    color: var(--fern);
+    color: var(--dusty-olive);
 }
 
 .form-group input[type="text"]:focus,
@@ -471,7 +465,7 @@ section h2::after {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--fern);
+    border-color: var(--dusty-olive);
     box-shadow: 0 0 0 3px rgba(109, 111, 82, 0.1);
 }
 
@@ -496,7 +490,7 @@ section h2::after {
     padding: 0.75rem 1rem;
     border-radius: 4px;
     transition: background 0.3s;
-    color: var(--fern);
+    color: var(--dusty-olive);
     background: var(--white);
 }
 
@@ -508,7 +502,7 @@ section h2::after {
     width: auto;
     cursor: pointer;
     margin: 0;
-    accent-color: var(--fern);
+    accent-color: var(--dusty-olive);
 }
 
 .allergy-container {
@@ -594,9 +588,9 @@ section h2::after {
 
 .form-message.success {
     background: var(--white);
-    color: var(--fern);
+    color: var(--dusty-olive);
     display: block;
-    border: 2px solid var(--fern);
+    border: 2px solid var(--dusty-olive);
 }
 
 .form-message.error {
