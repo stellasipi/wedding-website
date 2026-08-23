@@ -394,7 +394,7 @@ form.addEventListener('submit', async function(e) {
     data.language = currentLang;
     
     try {
-        const scriptURL = 'https://script.google.com/macros/library/d/1kXmJGQz8K-lSAMhZZ0SS-o2QMUemdTjbZDsg9_j6hhmT-pMPGl6NjDmS/1';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbx6tY6IG9paBQQve8z96JgcMBZ8wrRWMFNna6bkkiTjZAjS8T0lYBKJMC5LSvgKuWH3/exec';
         
         const response = await fetch(scriptURL, {
             method: 'POST',
