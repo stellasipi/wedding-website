@@ -447,7 +447,6 @@ section h2::after {
 
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group select,
 .form-group textarea {
     width: 100%;
     padding: 1rem;
@@ -462,7 +461,6 @@ section h2::after {
 
 .form-group input[type="text"]:focus,
 .form-group input[type="email"]:focus,
-.form-group select:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--dusty-olive);

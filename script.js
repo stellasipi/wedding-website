@@ -261,8 +261,8 @@ nameInput.addEventListener('input', function() {
     }
 });
 
-const emailInputEl = document.getElementById('email');
-emailInputEl.addEventListener('input', function() {
+const emailInput = document.getElementById('email');
+emailInput.addEventListener('input', function() {
     clearFieldError('error-email');
     this.classList.remove('input-error');
 });
@@ -297,7 +297,6 @@ function validateForm() {
     }
 
     // Email (optional, but must be a valid format if filled in)
-    const emailInput = document.getElementById('email');
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailInput.value.trim() && !emailPattern.test(emailInput.value.trim())) {
         showFieldError('error-email', translations[currentLang].error_email_invalid);
@@ -364,7 +363,6 @@ form.addEventListener('submit', async function(e) {
     const allergyStatus = isAttending ? document.querySelector('input[name="allergy_status"]:checked') : null;
     
     const submitBtn = form.querySelector('.submit-btn');
-    const originalText = submitBtn.textContent;
     submitBtn.disabled = true;
     submitBtn.textContent = translations[currentLang].submitting;
     

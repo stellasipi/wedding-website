@@ -155,44 +155,44 @@
             </div>
             
             <div id="conditional-fields">
-            <div class="form-group">
-                <label data-translate="form_allergies">Ételallergiák *</label>
-                <div class="allergy-container">
+                <div class="form-group">
+                    <label data-translate="form_allergies">Ételallergiák *</label>
+                    <div class="allergy-container">
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="allergy_status" value="Nincs">
+                                <span data-translate="allergies_none">Nincs</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="allergy_status" value="Van">
+                                <span data-translate="allergies_have">Van</span>
+                            </label>
+                        </div>
+                        <div class="allergy-textbox" id="allergy-textbox-container">
+                            <input type="text" id="allergies_text" name="allergies_text" data-translate-placeholder="allergies_placeholder">
+                        </div>
+                    </div>
+                    <span class="field-error" id="error-allergies"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label data-translate="form_driver">Igénybe vennéd a sofőrszolgáltatást a helyszín és Kecskemét között? *</label>
                     <div class="radio-group">
                         <label>
-                            <input type="radio" name="allergy_status" value="Nincs">
-                            <span data-translate="allergies_none">Nincs</span>
+                            <input type="radio" name="driver_service" value="Igen">
+                            <span data-translate="driver_yes">Igen</span>
                         </label>
                         <label>
-                            <input type="radio" name="allergy_status" value="Van">
-                            <span data-translate="allergies_have">Van</span>
+                            <input type="radio" name="driver_service" value="Nem">
+                            <span data-translate="driver_no">Nem</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="driver_service" value="Még nem tudom">
+                            <span data-translate="driver_maybe">Még nem tudom</span>
                         </label>
                     </div>
-                    <div class="allergy-textbox" id="allergy-textbox-container">
-                        <input type="text" id="allergies_text" name="allergies_text" data-translate-placeholder="allergies_placeholder">
-                    </div>
+                    <span class="field-error" id="error-driver"></span>
                 </div>
-                <span class="field-error" id="error-allergies"></span>
-            </div>
-            
-            <div class="form-group">
-                <label data-translate="form_driver">Igénybe vennéd a sofőrszolgáltatást a helyszín és Kecskemét között? *</label>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="driver_service" value="Igen">
-                        <span data-translate="driver_yes">Igen</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="driver_service" value="Nem">
-                        <span data-translate="driver_no">Nem</span>
-                    </label>
-                    <label>
-                        <input type="radio" name="driver_service" value="Még nem tudom">
-                        <span data-translate="driver_maybe">Még nem tudom</span>
-                    </label>
-                </div>
-                <span class="field-error" id="error-driver"></span>
-            </div>
             </div>
             
             <div class="form-group">
