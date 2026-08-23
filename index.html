@@ -1397,7 +1397,12 @@
                 if (entry.isIntersecting) {
                     const activeId = entry.target.id;
                     siteNavLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+                        const isActive = link.getAttribute('href') === '#' + activeId;
+                        link.classList.toggle('active', isActive);
+                        if (isActive) {
+                            // On mobile, the nav links can scroll horizontally - keep the active one in view
+                            link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                        }
                     });
                 }
             });
