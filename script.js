@@ -154,23 +154,47 @@ function setLanguage(lang) {
     localStorage.setItem('preferredLanguage', lang);
 }
 
-// Switches language with a very subtle fade on the visible text (used for button clicks)
+// Switches language with a subtle, properly-masked fade on the visible text (used for button clicks)
+// Driven entirely via inline styles so it can never lose out to another CSS rule's
+// own transition/opacity (several elements - nav links, the submit button, info-card
+// paragraphs - declare their own, which was silently winning on the fade-back-in step).
+const FADE_OUT_MS = 180;
+const FADE_IN_MS = 260;
+
 function switchLanguage(lang) {
     if (lang === currentLang) return;
 
-    const fadeTargets = document.querySelectorAll('[data-translate]');
-    fadeTargets.forEach(el => el.classList.add('lang-fade'));
+    const fadeTargets = Array.from(document.querySelectorAll('[data-translate]'));
+    // Remember each element's natural resting opacity (some, like info-card text, aren't 1)
+    const restOpacities = fadeTargets.map(el => getComputedStyle(el).opacity);
+
+    fadeTargets.forEach(el => {
+        el.style.transition = `opacity ${FADE_OUT_MS}ms ease-in`;
+        el.style.opacity = '0.08';
+    });
 
     setTimeout(() => {
         setLanguage(lang);
-        // Let the text-swap paint settle on its own frame first, so the
-        // fade-in transition reliably animates instead of snapping in place
+
+        // Force layout so the browser commits the dimmed state as a real starting
+        // point - otherwise the text-swap and the fade-in can collapse into one frame.
+        fadeTargets.forEach(el => el.offsetHeight);
+
         requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                fadeTargets.forEach(el => el.classList.remove('lang-fade'));
+            fadeTargets.forEach((el, i) => {
+                el.style.transition = `opacity ${FADE_IN_MS}ms ease-out`;
+                el.style.opacity = restOpacities[i];
             });
+
+            // Clean up afterwards so CSS rules regain normal control
+            setTimeout(() => {
+                fadeTargets.forEach(el => {
+                    el.style.opacity = '';
+                    el.style.transition = '';
+                });
+            }, FADE_IN_MS);
         });
-    }, 130);
+    }, FADE_OUT_MS);
 }
 
 // Initialize language
