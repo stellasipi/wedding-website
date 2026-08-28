@@ -584,13 +584,6 @@ section h2::after {
     display: none;
 }
 
-.form-message.success {
-    background: var(--white);
-    color: var(--dusty-olive);
-    display: block;
-    border: 2px solid var(--dusty-olive);
-}
-
 .form-message.error {
     background: var(--soft-linen);
     color: var(--evergreen);
