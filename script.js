@@ -154,6 +154,25 @@ function setLanguage(lang) {
     localStorage.setItem('preferredLanguage', lang);
 }
 
+// Switches language with a very subtle fade on the visible text (used for button clicks)
+function switchLanguage(lang) {
+    if (lang === currentLang) return;
+
+    const fadeTargets = document.querySelectorAll('[data-translate]');
+    fadeTargets.forEach(el => el.classList.add('lang-fade'));
+
+    setTimeout(() => {
+        setLanguage(lang);
+        // Let the text-swap paint settle on its own frame first, so the
+        // fade-in transition reliably animates instead of snapping in place
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                fadeTargets.forEach(el => el.classList.remove('lang-fade'));
+            });
+        });
+    }, 130);
+}
+
 // Initialize language
 document.addEventListener('DOMContentLoaded', function() {
     const savedLang = localStorage.getItem('preferredLanguage') || 'hu';
@@ -162,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Language button listeners
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-            setLanguage(this.getAttribute('data-lang'));
+            switchLanguage(this.getAttribute('data-lang'));
         });
     });
 });

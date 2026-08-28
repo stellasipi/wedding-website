@@ -28,6 +28,15 @@
     box-sizing: border-box;
 }
 
+[data-translate] {
+    transition: opacity 0.28s ease-out;
+}
+
+[data-translate].lang-fade {
+    opacity: 0.55;
+    transition: opacity 0.13s ease-in;
+}
+
 html {
     background: #FFFFFF;
 }
